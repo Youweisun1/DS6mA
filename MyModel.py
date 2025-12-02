@@ -27,9 +27,6 @@ class DS6mA(nn.Module):
             nn.Dropout(0.1)
         )
         self.conv4 = convmixer_block(32, 5)
-        # self.drop = nn.Sequential(
-        #     nn.Dropout(0.1)
-        # )
         self.out = nn.Linear(1312, 1024)  # fully connected layer, output 10 classes　　　
         self.block1 = nn.Sequential(nn.Linear(1024, 256),
                                     nn.BatchNorm1d(256),
@@ -81,4 +78,5 @@ class convmixer_block(nn.Module):
         x=self.dw(x)+x
         x=self.pw(x)
         return x
+
 
